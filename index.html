@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>El Taller Abandonado — La Memoria del Núcleo</title>
+  </head>
+  <body>
+    <!-- Lienzo WebGL: lo inyecta main.js -->
+    <div id="lienzo"></div>
+
+    <!-- ============ PANTALLA DE ARRANQUE ============ -->
+    <!-- Necesaria para obtener el gesto de usuario que exigen los
+         navegadores antes de reproducir video y audio. -->
+    <div id="arranque">
+      <div class="arranque-caja">
+        <p class="kicker">Registro de mantenimiento · Unidad K-07</p>
+        <h1>EL TALLER<br />ABANDONADO</h1>
+        <p class="sinopsis">
+          Una unidad humanoide yace desmantelada sobre la camilla de reparación.
+          El pecho abierto, un brazo separado, los cables al aire.
+          Dentro del torso aún late su <strong>núcleo de procesamiento</strong>.
+          <br /><br />
+          Lo que se reproduce ahí no es un video: es su <em>memoria</em>.
+        </p>
+
+        <div id="barra-carga"><span id="barra-carga-relleno"></span></div>
+        <p id="estado-carga">Cargando memoria del núcleo…</p>
+
+        <button id="btn-iniciar" disabled>INICIAR SISTEMA</button>
+        <p class="pista">Pulsa el botón o la tecla <kbd>Espacio</kbd></p>
+      </div>
+    </div>
+
+    <!-- ============ HUD ============ -->
+    <div id="hud" class="oculto">
+      <!-- Identificación de la escena -->
+      <div class="panel" id="panel-titulo">
+        <p class="panel-tag">Unidad K-07 · Núcleo de procesamiento</p>
+        <div class="fila">
+          <span class="etiqueta">ENERGÍA</span>
+          <div class="medidor"><span id="medidor-energia"></span></div>
+          <span class="valor" id="valor-energia">0%</span>
+        </div>
+        <p class="panel-estado" id="estado-sistema">SISTEMA INACTIVO</p>
+      </div>
+
+      <!-- Comprobación del audio espacial -->
+      <div class="panel" id="panel-audio">
+        <p class="panel-tag">Audio espacial · PositionalAudio</p>
+        <div class="fila">
+          <span class="etiqueta">DISTANCIA</span>
+          <span class="valor" id="valor-distancia">—</span>
+        </div>
+        <div class="fila">
+          <span class="etiqueta">VOLUMEN</span>
+          <div class="medidor"><span id="medidor-volumen"></span></div>
+          <span class="valor" id="valor-volumen">0%</span>
+        </div>
+        <p class="ayuda">
+          Acércate o aléjate del núcleo con la rueda del ratón y rodea al robot:
+          el volumen sube y baja según tu posición en la escena.
+        </p>
+      </div>
+
+      <!-- Controles -->
+      <div class="panel" id="panel-controles">
+        <p class="panel-tag">Controles</p>
+        <ul>
+          <li><kbd>Espacio</kbd> reproducir / pausar</li>
+          <li><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> desplazar la cámara</li>
+          <li><kbd>Q</kbd><kbd>E</kbd> bajar / subir</li>
+          <li><kbd>Arrastrar</kbd> orbitar · <kbd>Rueda</kbd> acercar</li>
+          <li><kbd>R</kbd> volver a la vista inicial</li>
+          <li><kbd>C</kbd> cámara automática · <kbd>H</kbd> ocultar HUD</li>
+        </ul>
+      </div>
+
+      <!-- Barra inferior -->
+      <div id="barra-inferior">
+        <button id="btn-play" class="accion">
+          <span class="icono">▶</span><span id="btn-play-texto">REPRODUCIR</span>
+        </button>
+        <button id="btn-reiniciar" class="accion secundaria">
+          <span class="icono">↺</span>REINICIAR MEMORIA
+        </button>
+        <button id="btn-orbita" class="accion secundaria">
+          <span class="icono">◎</span>CÁMARA AUTOMÁTICA
+        </button>
+      </div>
+
+      <!-- Telemetría -->
+      <div id="fps">60 FPS</div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
